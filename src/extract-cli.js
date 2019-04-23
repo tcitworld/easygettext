@@ -75,6 +75,10 @@ files.forEach(function(filename) {
       }
     }
 
+    if (lang === 'ts') {
+      extractor.parseTypeScript(file, data);
+    }
+
     if (lang === 'js') {
       extractor.parseJavascript(file, data);
     }

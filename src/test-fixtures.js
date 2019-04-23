@@ -409,6 +409,30 @@ export default {
     }
 }`;
 
+exports.VUE_COMPONENT_EXPECTED_TYPESCRIPT_SCRIPT_TAG = `
+
+let x: string  = 'string';
+
+export default {
+    name: "greetings",
+    computed: {
+        greeting_message(): Message {
+            return this.$gettext("Hello there!")
+        },
+        duplicated_greeting_message(): Message {
+            return this.$gettext("Hello there!")
+        },
+        answer_message(): Message {
+            return this.$gettext("General Kenobi! You are a bold one.")
+        }
+    },
+    methods: {
+        async getGreetingMessageAnswer(): Promise<Message> {
+            return await Promise.resolve('General Kenobi!');
+        }
+    }
+}`;
+
 exports.SCRIPT_USING_NGETTEXT = `
     export default {
         name: "greetings",

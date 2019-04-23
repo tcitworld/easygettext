@@ -9,6 +9,7 @@ const walk = require('acorn-walk');
 const constants = require('./constants.js');
 const jsExtractor = require('./javascript-extract.js');
 const flowRemoveTypes = require('flow-remove-types');
+const ts = require('typescript');
 
 // Internal regular expression used to escape special characters
 const ESCAPE_REGEX = /[\-\[\]\/{}()*+?.\\^$|]/g;
@@ -258,6 +259,18 @@ exports.Extractor = class Extractor {
         }
       }
     }
+  }
+
+  parseTypeScript(filename, content) {
+    const jsContent = this.processTypeScript(content);
+
+    this.parseJavascript(filename, jsContent.outputText);
+  }
+
+  processTypeScript(content) {
+    return ts.transpileModule(content, {
+      compilerOptions: { module: ts.ModuleKind.CommonJS }
+    });
   }
 
   parseJavascript(filename, content) {

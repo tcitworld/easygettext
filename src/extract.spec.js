@@ -101,6 +101,12 @@ describe('Extractor object', () => {
     extractor.parseJavascript(fixtures.VUE_COMPONENT_FILENAME, fixtures.VUE_COMPONENT_EXPECTED_PROCESSED_FLOW_SCRIPT_TAG);
     expect(extractor.toString()).to.equal(fixtures.POT_OUTPUT_VUE_SCRIPT_GETTEXT);
   });
+
+  it('should output a correct POT file with singular strings ($gettext) extracted from typescript', () => {
+    const extractor = new extract.Extractor();
+    extractor.parseTypeScript(fixtures.VUE_COMPONENT_FILENAME, fixtures.VUE_COMPONENT_EXPECTED_TYPESCRIPT_SCRIPT_TAG);
+    expect(extractor.toString()).to.equal(fixtures.POT_OUTPUT_VUE_SCRIPT_GETTEXT);
+  });
 });
 
 
