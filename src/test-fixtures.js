@@ -453,6 +453,15 @@ const asyncModule = () => import('module');
 const message = this.$gettext('Hello world from the future');
 `;
 
+exports.SCRIPT_WITH_DECORATORS = `
+@Component({
+  toto: "tata"
+})
+export default class toto { 
+  get hello() { this.$gettext('world'); }
+};
+`;
+
 exports.POT_OUTPUT_0 = `msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\\n"

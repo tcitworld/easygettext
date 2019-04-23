@@ -118,5 +118,15 @@ describe('Javascript extractor object', () => {
       expect(extractedStrings.length).to.be.equal(1);
       expect(extractedStrings[0].msgid).to.be.equal('Hello world from the future');
     });
+
+    it('should not break parser when using es7 decorators', () => {
+      const filename = 'decorators.vue';
+      const extractedStrings = jsExtractor.extractStringsFromJavascript(
+        filename,
+        fixtures.SCRIPT_WITH_DECORATORS
+      );
+
+      expect(extractedStrings.length).to.be.equal(1);
+    });
   });
 });

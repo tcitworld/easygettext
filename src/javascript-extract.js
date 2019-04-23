@@ -1,5 +1,6 @@
 const {Parser} = require('acorn');
 const stage3 = require('acorn-stage3');
+const decorator = require('acorn-decorators');
 const Pofile = require('pofile');
 
 const {MARKER_NO_CONTEXT, DEFAULT_VUE_GETTEXT_FUNCTIONS} = require('./constants.js');
@@ -35,7 +36,7 @@ function getGettextEntriesFromScript(script) {
     },
   };
 
-  Parser.extend(stage3).parse(script, ACORN_OPTIONS);
+  Parser.extend(stage3).extend(decorator.default).parse(script, ACORN_OPTIONS);
 
   let extractedEntries = [];
 
